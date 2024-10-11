@@ -19,8 +19,8 @@ impl CodeTable for Classic {
             26..=51 => idx + LOWERCASE_OFFSET, // a..z 
             52..=61 => idx + NUMBER_OFFSET, // 0..9
             62 => 43, // +
-            63 => 46, // /
-            _ => return NONE
+            63 => 47, // /
+            _ => return None
         } as u8;
 
         Some(ascii_char as char)
@@ -31,10 +31,10 @@ impl CodeTable for Classic {
         let base64_idx = match c {
             65..=90 => c - UPPERCASE_OFFSET,
             97..=122 => c - LOWERCASE_OFFSET,
-            30..=39 => c - NUMBER_OFFSET,
+            48..=57 => c - NUMBER_OFFSET,
             43 => 62,
-            46 => 63,
-            _ => return NONE
+            47 => 63,
+            _ => return None
         } as u8;
 
         Some(base64_idx)
